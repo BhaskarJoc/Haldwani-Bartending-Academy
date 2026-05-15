@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haldwani Bartending Academy — Haldwani Bartending Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D08A;
+    --gold-dark: #8B6914;
+    --dark: #0E0C08;
+    --dark2: #1A1710;
+    --dark3: #252217;
+    --cream: #F5EDD8;
+    --cream2: #EAD9B5;
+    --text: #F5EDD8;
+    --text-muted: #A89870;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(14,12,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--gold); letter-spacing: 1px;
+    cursor: pointer;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none; cursor: pointer;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--dark);
+    border: none; padding: 0.5rem 1.25rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    max-width: 100%; padding: 0;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 60%, #2a220e 0%, var(--dark) 65%);
+    position: relative; overflow: hidden;
+  }
+  .hero-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px),
+                      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px);
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    padding: 0.4rem 1.2rem; margin-bottom: 1.5rem;
+    border-radius: 1px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem); font-weight: 700;
+    line-height: 1.05; color: var(--cream);
+    max-width: 800px; margin-bottom: 0.5rem;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--text-muted); max-width: 500px;
+    margin: 1.25rem auto 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+    border: none; padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-outline {
+    background: transparent; color: var(--cream);
+    border: 1px solid rgba(245,237,216,0.3); padding: 0.85rem 2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    font-weight: 400; letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border-radius: 2px; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;
+    margin-top: 4rem; padding-top: 3rem;
+    border-top: 1px solid var(--border);
+    width: 100%; max-width: 700px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; color: var(--gold); font-weight: 700;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* SECTION HEADINGS */
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); color: var(--cream);
+    margin-bottom: 1rem; line-height: 1.15;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-desc { color: var(--text-muted); max-width: 520px; font-size: 1rem; }
+  .divider {
+    width: 48px; height: 2px; background: var(--gold);
+    margin: 1.5rem 0;
+  }
+
+  /* ABOUT */
+  #about { padding-top: 6rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+  .about-visual {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+  }
+  .about-visual::before {
+    content: ''; position: absolute; top: -8px; left: -8px;
+    right: 8px; bottom: 8px;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px; pointer-events: none;
+  }
+  .cocktail-art {
+    font-size: 5rem; text-align: center; display: block;
+    filter: hue-rotate(0deg) saturate(1.5);
+    line-height: 1.2;
+  }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .tag {
+    border: 1px solid var(--border); color: var(--text-muted);
+    font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 1px; letter-spacing: 0.5px;
+  }
+  .feature-list { list-style: none; margin-top: 1.5rem; }
+  .feature-list li {
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+    color: var(--text-muted); font-size: 0.95rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .feature-list li::before {
+    content: '◆'; color: var(--gold); font-size: 0.5rem; flex-shrink: 0;
+  }
+
+  /* COURSES */
+  #courses { background: var(--dark2); max-width: 100%; padding: 5rem 2.5rem; }
+  #courses .inner { max-width: 1100px; margin: 0 auto; }
+  .courses-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .course-card {
+    background: var(--dark3); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.2s;
+    cursor: pointer; position: relative; overflow: hidden;
+  }
+  .course-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .course-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+  .course-card:hover::after { transform: scaleX(1); }
+  .course-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .course-level {
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .course-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--cream); margin-bottom: 0.75rem;
+  }
+  .course-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+  .course-meta { display: flex; gap: 1rem; font-size: 0.78rem; color: var(--text-muted); }
+  .course-price {
+    margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .price-amt {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; color: var(--gold);
+  }
+  .price-dur { font-size: 0.78rem; color: var(--text-muted); }
+  .enroll-btn {
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 0.45rem 1rem; font-size: 0.78rem; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer; border-radius: 2px;
+    transition: background 0.2s, color 0.2s; font-family: 'DM Sans', sans-serif;
+  }
+  .enroll-btn:hover { background: var(--gold); color: var(--dark); }
+
+  /* ADMISSION FORM */
+  #admissions { padding: 5rem 2.5rem; }
+  .admission-wrap {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+    max-width: 1100px; margin: 3rem auto 0;
+  }
+  .admission-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: var(--cream); margin-bottom: 1rem;
+  }
+  .info-steps { list-style: none; margin-top: 1.5rem; }
+  .info-steps li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding-bottom: 1.5rem; position: relative;
+  }
+  .info-steps li:not(:last-child)::after {
+    content: ''; position: absolute; left: 15px; top: 32px; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--dark3); border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: var(--gold); flex-shrink: 0; font-weight: 500;
+  }
+  .step-text { color: var(--text-muted); font-size: 0.9rem; }
+  .step-text strong { color: var(--cream); display: block; margin-bottom: 0.2rem; }
+  .form-card {
+    background: var(--dark2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: var(--dark3); border: 1px solid var(--border);
+    color: var(--text); padding: 0.75rem 1rem; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-group select { appearance: none; cursor: pointer; }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-submit {
+    width: 100%; background: var(--gold); color: var(--dark);
+    border: none; padding: 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer; border-radius: 2px;
+    transition: background 0.2s; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+  .success-msg {
+    display: none; text-align: center; padding: 1.5rem;
+    color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem;
+  }
+
+  /* GALLERY / VIBES */
+  #gallery { background: var(--dark); padding: 5rem 2.5rem; max-width: 100%; }
+  #gallery .inner { max-width: 1100px; margin: 0 auto; }
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto;
+    gap: 1rem; margin-top: 3rem;
+  }
+  .gallery-item {
+    background: var(--dark2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 2rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 140px;
+  }
+  .gallery-item:first-child { grid-column: span 2; grid-row: span 2; min-height: 280px; }
+  .gallery-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+  .gallery-item:first-child .gallery-emoji { font-size: 4rem; }
+  .gallery-label {
+    font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.5px;
+  }
+  .gallery-item:first-child .gallery-label { font-size: 1rem; color: var(--cream); font-family: 'Playfair Display', serif; }
+
+  /* TESTIMONIALS */
+  #testimonials { padding: 5rem 2.5rem; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .testi-card {
+    background: var(--dark2); border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.75rem;
+  }
+  .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: var(--text-muted); font-size: 0.92rem; font-style: italic; margin-bottom: 1.25rem; }
+  .testi-name { font-weight: 500; color: var(--cream); font-size: 0.88rem; }
+  .testi-role { font-size: 0.78rem; color: var(--gold); }
+
+  /* AI CHATBOT */
+  #ai-bot {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+  }
+  .chat-toggle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--gold); border: none; cursor: pointer;
+    font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .chat-toggle:hover { transform: scale(1.08); background: var(--gold-light); }
+  .chat-window {
+    position: absolute; bottom: 68px; right: 0;
+    width: 340px; background: var(--dark2);
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; display: none; flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    max-height: 500px;
+  }
+  .chat-window.open { display: flex; }
+  .chat-header {
+    background: var(--dark3); padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .chat-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { font-size: 0.88rem; font-weight: 500; color: var(--cream); }
+  .chat-header-status { font-size: 0.72rem; color: #4ade80; }
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+    min-height: 220px; max-height: 300px;
+  }
+  .msg { max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.5; }
+  .msg-bot { background: var(--dark3); color: var(--text); border-radius: 12px 12px 12px 2px; align-self: flex-start; }
+  .msg-user { background: var(--gold); color: var(--dark); border-radius: 12px 12px 2px 12px; align-self: flex-end; font-weight: 500; }
+  .typing-indicator { display: flex; gap: 4px; padding: 0.65rem 0.9rem; background: var(--dark3); border-radius: 12px 12px 12px 2px; width: fit-content; }
+  .typing-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); animation: bounce 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+  .chat-input-row {
+    padding: 0.75rem; border-top: 1px solid var(--border);
+    display: flex; gap: 0.5rem;
+  }
+  .chat-input {
+    flex: 1; background: var(--dark3); border: 1px solid var(--border);
+    color: var(--text); padding: 0.5rem 0.75rem; border-radius: 20px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none;
+  }
+  .chat-input:focus { border-color: var(--gold); }
+  .chat-send {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--gold); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2); border-top: 1px solid var(--border);
+    padding: 3rem 2.5rem; text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .footer-addr { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .footer-links a { color: var(--text-muted); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { color: var(--text-muted); font-size: 0.78rem; margin-top: 2rem; opacity: 0.6; }
+
+  /* Quick nav scroll fix */
+  .scroll-target { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="scrollTo('hero')">⟡ Haldwani Bartending Academy</div>
+  <div class="nav-links">
+    <a onclick="scrollTo('about')">About</a>
+    <a onclick="scrollTo('courses')">Courses</a>
+    <a onclick="scrollTo('gallery')">Academy</a>
+    <a onclick="scrollTo('testimonials')">Reviews</a>
+    <a onclick="scrollTo('admissions')">Admissions</a>
+  </div>
+  <button class="nav-cta" onclick="scrollTo('admissions')">Apply Now</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-lines"></div>
+  <div style="position:relative; padding: 2rem 2rem 0;">
+    <div class="hero-badge">Haldwani's Premier Bartending Academy</div>
+    <h1 class="hero-title">Master the Art of<br><em>Craft Cocktails</em></h1>
+    <p class="hero-sub">Professional bartending training in the heart of Kumaon — from classic techniques to modern mixology.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollTo('admissions')">Start Your Journey</button>
+      <button class="btn-outline" onclick="scrollTo('courses')">Explore Courses</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Graduates</div>
+      </div>
+      <div>
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Expert Trainers</div>
+      </div>
+      <div>
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Placement Rate</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Course Programs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="scroll-target">
+  <div style="max-width:1100px; margin: 0 auto;">
+    <div class="section-label">Who We Are</div>
+    <h2 class="section-title">Crafted for <em>Aspiring</em><br>Bartenders</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div>
+        <p class="section-desc">Haldwani Bartending Academy Academy was founded with a singular vision — to bring world-class bartending education to the hills of Uttarakhand. Located in Haldwani, we train students for careers in five-star hotels, luxury resorts, and bars across India and abroad.</p>
+        <ul class="feature-list" style="margin-top:2rem">
+          <li>Hands-on training with real bar setups and equipment</li>
+          <li>Industry-certified instructors with 10+ years experience</li>
+          <li>Partnerships with leading hospitality brands in India</li>
+          <li>100% practical curriculum — not just theory</li>
+          <li>Placement assistance across Uttarakhand, Delhi NCR & beyond</li>
+          <li>Small batch sizes — personalized attention guaranteed</li>
+        </ul>
+      </div>
+      <div class="about-visual">
+        <span class="cocktail-art">🍹🥃🍸<br>🥂🍾🧃</span>
+        <p style="text-align:center; color:var(--text-muted); font-size:0.85rem; margin-top:1rem;">Our fully equipped training bar</p>
+        <div class="about-tags">
+          <span class="tag">Flair Bartending</span>
+          <span class="tag">Classic Cocktails</span>
+          <span class="tag">Molecular Mixology</span>
+          <span class="tag">Wine & Spirits</span>
+          <span class="tag">Bar Management</span>
+          <span class="tag">Customer Service</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="scroll-target">
+  <div class="inner">
+    <div class="section-label">Our Programs</div>
+    <h2 class="section-title">Choose Your <em>Path</em></h2>
+    <div class="divider"></div>
+    <p class="section-desc">From weekend workshops to intensive diploma programs — we have a course for every stage of your journey.</p>
+    <div class="courses-grid">
+      <div class="course-card">
+        <span class="course-icon">🍹</span>
+        <div class="course-level">Beginner</div>
+        <div class="course-name">Cocktail Fundamentals</div>
+        <div class="course-desc">Learn essential techniques, spirits knowledge, glassware, and your first 30 classic cocktails.</div>
+        <div class="course-meta"><span>⏱ 4 Weeks</span><span>📅 Weekends</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹8,500</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+      <div class="course-card">
+        <span class="course-icon">🥃</span>
+        <div class="course-level">Intermediate</div>
+        <div class="course-name">Professional Bartending</div>
+        <div class="course-desc">Bar setup, speed techniques, flair basics, mocktails, and advanced cocktail menu creation.</div>
+        <div class="course-meta"><span>⏱ 8 Weeks</span><span>📅 Full-time</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹18,000</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+      <div class="course-card">
+        <span class="course-icon">🏆</span>
+        <div class="course-level">Advanced</div>
+        <div class="course-name">Diploma in Mixology</div>
+        <div class="course-desc">Our flagship program covering molecular mixology, beverage costing, bar management, and international spirits.</div>
+        <div class="course-meta"><span>⏱ 3 Months</span><span>📅 Full-time</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹35,000</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+      <div class="course-card">
+        <span class="course-icon">🎪</span>
+        <div class="course-level">Specialty</div>
+        <div class="course-name">Flair Bartending</div>
+        <div class="course-desc">Bottle spinning, juggling, showmanship — stand out at competitions and high-end venues.</div>
+        <div class="course-meta"><span>⏱ 6 Weeks</span><span>📅 Evenings</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹12,000</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+      <div class="course-card">
+        <span class="course-icon">🍾</span>
+        <div class="course-level">Specialty</div>
+        <div class="course-name">Wine & Sommelier Basics</div>
+        <div class="course-desc">Wine regions, tasting techniques, pairing with food, cellar management, and service etiquette.</div>
+        <div class="course-meta"><span>⏱ 3 Weeks</span><span>📅 Weekends</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹10,000</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+      <div class="course-card">
+        <span class="course-icon">📋</span>
+        <div class="course-level">Management</div>
+        <div class="course-name">Bar Operations & Management</div>
+        <div class="course-desc">For aspiring bar managers — inventory, licensing, staff training, P&L, and guest experience.</div>
+        <div class="course-meta"><span>⏱ 4 Weeks</span><span>📅 Weekends</span></div>
+        <div class="course-price">
+          <div><div class="price-amt">₹14,000</div><div class="price-dur">full course</div></div>
+          <button class="enroll-btn" onclick="scrollTo('admissions')">Enroll</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="scroll-target">
+  <div class="inner">
+    <div class="section-label">Life at the Academy</div>
+    <h2 class="section-title">Inside <em>Haldwani Bartending Academy</em></h2>
+    <div class="divider"></div>
+    <div class="gallery-grid">
+      <div class="gallery-item" style="background: linear-gradient(135deg, #1a1507, #2a1f05);">
+        <span class="gallery-emoji">🍸</span>
+        <div class="gallery-label" style="font-size:1.1rem;">Our Live Training Bar — fully stocked with professional equipment</div>
+      </div>
+      <div class="gallery-item"><span class="gallery-emoji">🔬</span><div class="gallery-label">Molecular Lab</div></div>
+      <div class="gallery-item"><span class="gallery-emoji">🏔️</span><div class="gallery-label">Haldwani Campus</div></div>
+      <div class="gallery-item"><span class="gallery-emoji">👨‍🍳</span><div class="gallery-label">Expert Faculty</div></div>
+      <div class="gallery-item"><span class="gallery-emoji">🎓</span><div class="gallery-label">Graduation Day</div></div>
+      <div class="gallery-item"><span class="gallery-emoji">🤝</span><div class="gallery-label">Industry Partners</div></div>
+      <div class="gallery-item"><span class="gallery-emoji">🎪</span><div class="gallery-label">Flair Practice</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="scroll-target">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Student Stories</div>
+    <h2 class="section-title">Graduates Who <em>Made It</em></h2>
+    <div class="divider"></div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I came with zero knowledge. After the 3-month diploma, I'm now working at a 5-star resort in Mussoorie. The practical training here is unmatched in all of Uttarakhand."</p>
+        <div class="testi-name">Rohit Bisht</div>
+        <div class="testi-role">Head Bartender, Lemon Tree Resort, Mussoorie</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The flair course changed my career. I competed at a national competition six months after finishing here. The faculty is incredibly patient and professional."</p>
+        <div class="testi-name">Priya Arya</div>
+        <div class="testi-role">Bartender, Taj Hotel, New Delhi</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"As someone from Nainital, I didn't want to travel to big cities for training. Haldwani Bartending Academy gave me world-class education right here in the hills. Grateful for the placement support too."</p>
+        <div class="testi-name">Deepak Joshi</div>
+        <div class="testi-role">Bar Manager, Jim Corbett Marriott</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section id="admissions" class="scroll-target">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Join Us</div>
+    <h2 class="section-title">Apply for <em>Admission</em></h2>
+    <div class="divider"></div>
+    <div class="admission-wrap">
+      <div class="admission-info">
+        <p class="section-desc">Take your first step towards a professional bartending career. Our next batch starts soon — seats are limited.</p>
+        <h3 style="margin-top:2rem">How Admissions Work</h3>
+        <ul class="info-steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Submit Application</strong>Fill the form with your details and preferred course.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>Counselling Call</strong>Our team will call you within 24 hours for a free counselling session.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>Campus Visit</strong>Visit our campus in Haldwani for a demo class and facility tour.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>Confirm & Enroll</strong>Pay the registration fee and lock your seat in the batch.</div>
+          </li>
+        </ul>
+        <div style="margin-top:2rem; padding: 1.25rem; background: var(--dark2); border: 1px solid var(--border); border-radius: 4px;">
+          <div class="section-label" style="margin-bottom:0.5rem;">Contact Us</div>
+          <p style="color: var(--text-muted); font-size:0.88rem;">📍 Mall Road Area, Haldwani, Uttarakhand 263139</p>
+          <p style="color: var(--text-muted); font-size:0.88rem;">📞 +91 98765 43210</p>
+          <p style="color: var(--text-muted); font-size:0.88rem;">✉️ admissions@shakerspirit.in</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3 style="font-family:'Playfair Display',serif; color:var(--cream); margin-bottom:1.5rem; font-size:1.3rem;">Admission Form</h3>
+        <div id="admission-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Rahul" id="f-fname">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Sharma" id="f-lname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="rahul@email.com" id="f-email">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+91 98765 XXXXX" id="f-phone">
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              <input type="number" placeholder="21" id="f-age" min="18" max="50">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Course Interested In</label>
+            <select id="f-course">
+              <option value="">— Select a Program —</option>
+              <option>Cocktail Fundamentals (₹8,500)</option>
+              <option>Professional Bartending (₹18,000)</option>
+              <option>Diploma in Mixology (₹35,000)</option>
+              <option>Flair Bartending (₹12,000)</option>
+              <option>Wine & Sommelier Basics (₹10,000)</option>
+              <option>Bar Operations & Management (₹14,000)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Any Prior Experience?</label>
+            <select id="f-exp">
+              <option value="">— Select —</option>
+              <option>No experience — complete beginner</option>
+              <option>Some home bartending experience</option>
+              <option>Worked in hospitality (non-bar role)</option>
+              <option>Some professional bar experience</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>City / Town you're from</label>
+            <input type="text" placeholder="Nainital / Almora / Dehradun..." id="f-city">
+          </div>
+          <div class="form-group">
+            <label>Message (optional)</label>
+            <textarea placeholder="Any questions or special requirements..." id="f-msg"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitForm()">Submit Application →</button>
+        </div>
+        <div class="success-msg" id="success-msg">
+          🥂 Application Received!<br>
+          <span style="font-family:'DM Sans',sans-serif; font-size:0.88rem; color:var(--text-muted); font-style:normal;">Our team will contact you within 24 hours. Welcome to the Haldwani Bartending Academy family!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">⟡ Haldwani Bartending Academy</div>
+  <div class="footer-addr">Haldwani Bartending Academy · Mall Road, Haldwani, Uttarakhand 263139</div>
+  <div class="footer-links">
+    <a onclick="scrollTo('about')">About</a>
+    <a onclick="scrollTo('courses')">Courses</a>
+    <a onclick="scrollTo('admissions')">Admissions</a>
+    <a>Instagram</a>
+    <a>WhatsApp Us</a>
+    <a>Privacy Policy</a>
+  </div>
+  <div class="footer-copy">© 2025 Haldwani Bartending Academy Academy, Haldwani. All rights reserved.</div>
+</footer>
+
+<!-- AI CHATBOT -->
+<div id="ai-bot">
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">🍹</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Mixer — Academy Assistant</div>
+        <div class="chat-header-status">● Online now</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg msg-bot">Hi! I'm Mixer 🍹 — your personal guide to Haldwani Bartending Academy Academy. Ask me anything about our courses, fees, admissions, or career prospects!</div>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" placeholder="Ask about courses, fees, careers..." onkeydown="if(event.key==='Enter') sendMsg()">
+      <button class="chat-send" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+  <button class="chat-toggle" onclick="toggleChat()" id="chat-toggle-btn">🍹</button>
+</div>
+
+<script>
+function scrollTo(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleChat() {
+  const w = document.getElementById('chat-window');
+  w.classList.toggle('open');
+}
+
+function submitForm() {
+  const fname = document.getElementById('f-fname').value;
+  const email = document.getElementById('f-email').value;
+  const course = document.getElementById('f-course').value;
+  if (!fname || !email || !course) {
+    alert('Please fill in your name, email, and select a course.');
+    return;
+  }
+  document.getElementById('admission-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
+
+function appendMsg(text, type) {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'msg msg-' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chat-messages');
+  const div = document.createElement('div');
+  div.className = 'typing-indicator';
+  div.id = 'typing';
+  div.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing');
+  if (t) t.remove();
+}
+
+const chatHistory = [];
+
+async function sendMsg() {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  appendMsg(text, 'user');
+  chatHistory.push({ role: 'user', content: text });
+  showTyping();
+
+  const systemPrompt = `You are Mixer, a friendly and knowledgeable AI assistant for Haldwani Bartending Academy Bartending Academy in Haldwani, Uttarakhand, India. 
+
+Academy details:
+- Location: Mall Road Area, Haldwani, Uttarakhand 263139
+- Phone: +91 98765 43210
+- Email: admissions@shakerspirit.in
+- 500+ graduates, 12+ expert trainers, 95% placement rate
+
+Courses offered:
+1. Cocktail Fundamentals – 4 weeks, weekends – ₹8,500
+2. Professional Bartending – 8 weeks, full-time – ₹18,000
+3. Diploma in Mixology – 3 months, full-time – ₹35,000 (flagship)
+4. Flair Bartending – 6 weeks, evenings – ₹12,000
+5. Wine & Sommelier Basics – 3 weeks, weekends – ₹10,000
+6. Bar Operations & Management – 4 weeks, weekends – ₹14,000
+
+Admission process: Apply online → counselling call within 24hrs → campus visit → pay registration fee → enroll.
+
+Eligibility: Minimum age 18. No prior experience needed for beginner courses.
+Placement: Assist with placement across Uttarakhand, Delhi NCR, and beyond. Partners include 5-star hotels, resorts, and luxury bars.
+
+Answer questions helpfully, concisely, and warmly. Keep responses under 100 words. Encourage users to apply or visit the campus. If asked something you don't know, suggest calling +91 98765 43210.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: chatHistory
+      })
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data.content && data.content[0] ? data.content[0].text : "Sorry, I couldn't get a response. Please call us at +91 98765 43210!";
+    appendMsg(reply, 'bot');
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    removeTyping();
+    appendMsg("I'm having trouble connecting right now. Please call us at +91 98765 43210 or email admissions@shakerspirit.in!", 'bot');
+  }
+}
+</script>
+</body>
+</html>
